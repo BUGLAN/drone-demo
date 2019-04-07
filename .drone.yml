@@ -3,16 +3,12 @@ name: greeting
 
 steps:
 - name: build
-  image: alpine
+  image: python:3.7
   commands:
-  - echo build
-
-- name: test
-  image: alpine
-  commands:
-  - echo test
+  - pip install pipenv
+  - pipenv install
 
 - name: run
   image: alpine
   commands:
-  - echo run
+  - pipenv run python app.py
