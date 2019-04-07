@@ -11,4 +11,6 @@ steps:
 - name: run
   image: python:3.7
   commands:
+  - pip install pipenv
+  - pipenv install
   - pipenv run python app.py
