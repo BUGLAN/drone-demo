@@ -5,12 +5,9 @@ steps:
 - name: build
   image: python:3.7
   commands:
-  - pip install pipenv
-  - pipenv install
+  - echo build
 
 - name: run
   image: python:3.7
   commands:
-  - pip install pipenv
-  - pipenv install
-  - pipenv run python app.py
+  - echo run
