@@ -9,6 +9,6 @@ steps:
   - pipenv install
 
 - name: run
-  image: alpine
+  image: python:3.7
   commands:
   - pipenv run python app.py
