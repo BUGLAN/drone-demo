@@ -2,20 +2,17 @@ kind: pipeline
 name: greeting
 
 steps:
-- name: en
+- name: build
   image: alpine
   commands:
-  - echo hello
-  - echo world
+  - echo build
 
-- name: es
+- name: test
   image: alpine
   commands:
-  - echo hola
-  - echo mundo
+  - echo test
 
-- name: fr
+- name: run
   image: alpine
   commands:
-  - echo bonjour
-  - echo monde
+  - echo run
