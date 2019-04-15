@@ -1,5 +1,5 @@
 kind: pipeline
-name: greeting
+name: drone-demo
 
 steps:
 - name: build
@@ -9,28 +9,28 @@ steps:
   - pipenv install
 
 - name: publish
-   image: plugins/docker:latest
-   settings:
-     username:
-       from_secret: docker_username
-     password:
-       from_secret: docker_password
-     repo: buglan/drone-demo
-     tags: latest
+  image: plugins/docker:latest
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: buglan/drone-demo
+    tags: latest
 
 - name: deploy
-   image: appleboy/drone-ssh
-   pull: true
-   port: 28379
-   settings:
-     host: buglan.org
-     user: root
-     key:
-       from_secret: deploy_key
-     script:
-     - mkidr /code
-     - cd /code
-     - docker pull buglan/drone-demo:latest
-     - echo "almost done"
-     - docker run -p 5000:5000 -d buglan/drone-demo
-     - echo 'success'
+  image: appleboy/drone-ssh
+  pull: true
+  port: 28379
+  settings:
+    host: buglan.org
+    user: root
+    key:
+      from_secret: deploy_key
+    script:
+    - mkidr /code
+    - cd /code
+    - docker pull buglan/drone-demo:latest
+    - echo "almost done"
+    - docker run -p 5000:5000 -d buglan/drone-demo
+    - echo 'success'
