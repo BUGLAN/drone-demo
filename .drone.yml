@@ -30,9 +30,8 @@ steps:
     script:
     - mkidr /code
     - cd /code
-    - docker kill drone-demo
-    - docker rmi -f buglan/drone-demo
     - docker pull buglan/drone-demo:latest
+    - docker rm -f drone-demo
     - echo "almost done"
     - docker run --name=drone-demo -p 5000:5000 -d buglan/drone-demo
     - echo 'success'
